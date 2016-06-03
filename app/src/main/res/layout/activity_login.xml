@@ -33,7 +33,6 @@
             android:layout_height="50dp"
             android:id="@+id/topBar"
             android:weightSum="1">
-
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -110,5 +109,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
 </RelativeLayout>
+
