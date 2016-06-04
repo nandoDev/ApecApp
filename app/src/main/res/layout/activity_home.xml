@@ -7,15 +7,137 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.proyecto.ubicua.apecapp.HomeActivity">
+    tools:context="com.proyecto.ubicua.apecapp.HomeActivity"
+    android:background="@mipmap/backgorund_blue">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Bienvenido a Unapec"
-        android:id="@+id/textHome"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="141dp" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:weightSum="1"
+            android:background="#000f98"
+            android:id="@+id/topHolder">
+
+            <ImageButton
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:id="@+id/logoHome"
+                android:background="#00ffffff"
+                android:scaleType="fitXY"
+                android:src="@drawable/logo_homeblanco"
+                android:layout_gravity="left|center"
+                android:layout_margin="5dp"
+                android:layout_weight="0.53" />
+
+            <ImageView
+                android:layout_width="230dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/logoApecHorizontal"
+                android:src="@drawable/logo_apec_horizontal"
+                android:layout_gravity="top"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="5dp" />
+
+            <ImageButton
+                android:layout_width="35dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/logoSettings"
+                android:scaleType="fitXY"
+                android:background="#00ffffff"
+                android:layout_margin="5dp"
+                android:src="@drawable/logo_settings"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="240dp"
+            android:weightSum="1"
+            android:layout_marginTop="20dp"
+            android:id="@+id/datosEstudianteHolder">
+
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="100dp"
+                android:id="@+id/fotoEstudiante"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.66"
+                android:scaleType="centerCrop"
+                android:src="@drawable/contact" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Nombre Estudiante"
+                android:id="@+id/txtNombreHome"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Carrera"
+                android:id="@+id/txtCarreraHome"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Matrícula"
+                android:id="@+id/txtMatHome"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/menuHolder">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Bloques"
+                android:id="@+id/btnBloques"
+                android:layout_gravity="center_horizontal"
+                android:background="#f8b71e"
+                android:layout_margin="3dp" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Historial"
+                android:id="@+id/btnHistorial"
+                android:layout_gravity="center_horizontal"
+                android:background="#f8b71e"
+                android:layout_margin="3dp" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Perfil"
+                android:id="@+id/btnPerfil"
+                android:layout_gravity="center_horizontal"
+                android:background="#f8b71e"
+                android:layout_margin="3dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
 </RelativeLayout>

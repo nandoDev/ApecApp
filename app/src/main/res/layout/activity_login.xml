@@ -48,7 +48,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="1"
-            android:baselineAligned="true">
+            android:baselineAligned="true"
+            android:id="@+id/loginInputHolder">
 
             <ImageView
                 android:layout_width="222dp"
@@ -84,12 +85,10 @@
                 android:hint="Contraseña"
                 android:gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-
                 android:textStyle="bold"
                 android:password="false"
                 android:fontFamily="@string/abc_action_bar_home_description"
                 android:textColorHint="#ffffff" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -107,7 +106,6 @@
                 android:scaleType="fitXY"
                 android:background="#00ffffff" />
         </LinearLayout>
-
     </LinearLayout>
 </RelativeLayout>
 
