@@ -4,8 +4,13 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.android.sunshine.app.data.WeatherContract.LocationEntry;
-import com.example.android.sunshine.app.data.WeatherContract.WeatherEntry;
+import com.proyecto.ubicua.apecapp.data.ApecDbContract.StudentEntry;
+import com.proyecto.ubicua.apecapp.data.ApecDbContract.RecordEntry;
+import com.proyecto.ubicua.apecapp.data.ApecDbContract.GradeEntry;
+import com.proyecto.ubicua.apecapp.data.ApecDbContract.QuarterEntry;
+import com.proyecto.ubicua.apecapp.data.ApecDbContract.BlockEntry;
+import com.proyecto.ubicua.apecapp.data.ApecDbContract.SessionEntry;
+import com.proyecto.ubicua.apecapp.data.ApecDbContract.SubjectEntry;
 
 /**
  * Manages a local database for weather data.
@@ -13,9 +18,9 @@ import com.example.android.sunshine.app.data.WeatherContract.WeatherEntry;
 public class ApecDbHelper extends SQLiteOpenHelper {
 
     // If you change the database schema, you must increment the database version.
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 1;
 
-    static final String DATABASE_NAME = "weather.db";
+    static final String DATABASE_NAME = "ApecAppDb.db";
 
     public ApecDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -23,15 +28,46 @@ public class ApecDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        // Create a table to hold locations.  A location consists of the string supplied in the
+        // Create a table to hold students.  A location consists of the string supplied in the
         // location setting, the city name, and the latitude and longitude
-        final String SQL_CREATE_LOCATION_TABLE = "CREATE TABLE " + LocationEntry.TABLE_NAME + " (" +
-                LocationEntry._ID + " INTEGER PRIMARY KEY," +
-                LocationEntry.COLUMN_LOCATION_SETTING + " TEXT UNIQUE NOT NULL, " +
-                LocationEntry.COLUMN_CITY_NAME + " TEXT NOT NULL, " +
-                LocationEntry.COLUMN_COORD_LAT + " REAL NOT NULL, " +
-                LocationEntry.COLUMN_COORD_LONG + " REAL NOT NULL " +
+        final String SQL_CREATE_STUDENT_TABLE = "CREATE TABLE " + StudentEntry.TABLE_NAME + " (" +
+                StudentEntry.STUDENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                StudentEntry.COLUMN_STUDENT_NAME + " TEXT UNIQUE NOT NULL, " +
+                StudentEntry.COLUMN_REGNUMBER + " TEXT NOT NULL, " +
+                StudentEntry.COLUMN_PASSWORD + " TEXT NOT NULL, " +
+                StudentEntry.COLUMN_BIRTHDAY + " TEXT NOT NULL " +
+                StudentEntry.COLUMN_ADDRESS + " TEXT NOT NULL " +
+                StudentEntry.COLUMN_SUBJECT_ID + " INTEGER NOT NULL " +
                 " );";
+
+        final String SQL_CREATE_RECORDSTUDENT_TABLE = "CREATE TABLE " + RecordEntry.TABLE_NAME + " (" +
+                RecordEntry.COLUMN_STUDENT_ID + " INTEGER NOT NULL " +
+                RecordEntry.COLUMN_QUARTER_ID + " INTEGER NOT NULL, " +
+                RecordEntry.COLUMN_SUBJECT_ID + " INTEGER NOT NULL, " +
+                " );";
+
+        final String SQL_CREATE_GRADE_TABLE = "CREATE TABLE " + GradeEntry.TABLE_NAME + " (" +
+                GradeEntry.COLUMN_GRADE_ID + " INTEGER NOT NULL " +
+                GradeEntry.COLUMN_GRADE_NAME + " INTEGER NOT NULL, " +
+                GradeEntry.COLUMN_SUBJECT_ID + " INTEGER NOT NULL, " +
+                " );";
+
+        final String SQL_CREATE_QUARTER_TABLE = "CREATE TABLE " + QuarterEntry.TABLE_NAME + " (" +
+                RecordEntry.COLUMN_QUARTER_ID + " INTEGER NOT NULL " +
+                RecordEntry.COLUMN_QUARTER_NAME + " INTEGER NOT NULL, " +
+                " );";
+
+        final String SQL_CREATE_BLOCK_TABLE = "CREATE TABLE " + BlockEntry.TABLE_NAME + " (" +
+                RecordEntry.COLUMN_QUARTER_ID + " INTEGER NOT NULL " +
+                RecordEntry.COLUMN_QUARTER_NAME + " INTEGER NOT NULL, " +
+                " );";
+
+
+
+
+
+
+
 
         final String SQL_CREATE_WEATHER_TABLE = "CREATE TABLE " + WeatherEntry.TABLE_NAME + " (" +
                 // Why AutoIncrement here, and not above?
