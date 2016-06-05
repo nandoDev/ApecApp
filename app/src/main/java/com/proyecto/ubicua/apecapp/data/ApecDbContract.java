@@ -22,20 +22,19 @@ public class ApecDbContract {
 
         public static final String TABLE_NAME = "student";
         public static final String COLUMN_ID = "Idstudent";
-        public static final String COLUMN_USER = "user";
+        public static final String COLUMN_NAME = "namestudent";
+        public static final String COLUMN_REGNUMBER = "regnumber";
         public static final String COLUMN_PASS = "pass";
-        public static final String COLUMN_GRADE = "grade";
-        public static final String COLUMN_ADRRESS = "address";
+        public static final String COLUMN_GRADE_FK = "grade";
+        public static final String COLUMN_ADDRESS= "address";
         public static final String COLUMN_BIRTH = "birth";
     }
-
 
     public static final class GradeEntry implements BaseColumns {
 
         public static final String TABLE_NAME = "grade";
         public static final String COLUMN_ID = "Idgrade";
         public static final String COLUMN_NAME = "grade";
-
     }
 
     public static final class RecordEntry implements BaseColumns{
@@ -58,22 +57,20 @@ public class ApecDbContract {
         public static final String TABLE_NAME = "subject";
         public static final String COLUMN_ID = "Idsubject";
         public static final String COLUMN_NAME = "subject";
-
     }
 
     public static final class BlockEntry implements BaseColumns {
 
         public static final String TABLE_NAME = "block";
         public static final String COLUMN_ID = "Idblock";
-        public static final String COLUMN_SECCION = "Idseccion";
+        public static final String COLUMN_SESSION_FK = "Idsession";
     }
 
-        public static final class SeccionEntry implements BaseColumns{
+    public static final class SessionEntry implements BaseColumns{
 
-            public static final String TABLE_NAME = "seccion";
-            public static final String COLUMN_ID = "Idseccion";
-            public static final String COLUMN_SUBJECT = "Idsubject";
-            public static final String COLUMN_CALENDAR = "calendar";
-
-        }
+        public static final String TABLE_NAME = "session";
+        public static final String COLUMN_ID = "Idsession";
+        public static final String COLUMN_SUBJECT_FK = "Idsubject";
+        public static final String COLUMN_CALENDAR = "calendar";
+    }
 }
