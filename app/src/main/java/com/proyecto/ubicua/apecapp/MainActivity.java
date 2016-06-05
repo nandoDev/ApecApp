@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.proyecto.ubicua.apecapp.data.ApecDbHelper;
+
+
 public class MainActivity extends AppCompatActivity {
 
         EditText passField;
@@ -24,7 +27,14 @@ public class MainActivity extends AppCompatActivity {
 
             //TextView textView = (TextView) findViewById(R.id.textView);
 
+            ApecDbHelper dbHelper = new ApecDbHelper(this);
+
+            SQLiteDatabase db= dbHelper.getReadableDatabase();
+            db.close();
+
             SQLiteDatabase database = openOrCreateDatabase("ApecDb.db", MODE_PRIVATE,null);
+
+
 
             database.execSQL("create  table if not exists usuarios (user, password)");
             database.execSQL("insert into usuarios values ('nando05','@123')");
