@@ -5,8 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.android.sunshine.app.data.WeatherContract.LocationEntry;
-import com.example.android.sunshine.app.data.WeatherContract.WeatherEntry;
-
+import com.proyecto.ubicua.apecapp.data.ApecDbContract.GradeEntry;
 /**
  * Manages a local database for weather data.
  */
@@ -15,7 +14,7 @@ public class ApecDbHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
     private static final int DATABASE_VERSION = 2;
 
-    static final String DATABASE_NAME = "weather.db";
+    static final String DATABASE_NAME = "ApecDb.db";
 
     public ApecDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

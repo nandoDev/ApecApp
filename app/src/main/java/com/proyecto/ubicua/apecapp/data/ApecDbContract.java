@@ -18,57 +18,62 @@ public class ApecDbContract {
         return time.setJulianDay(julianDay);
     }
 
-    /*
-        Inner class that defines the contents of the location table
-     */
-    public static final class LocationEntry implements BaseColumns {
+    public static final class StudentEntry implements BaseColumns {
 
-        public static final String TABLE_NAME = "location";
-
-        // The location setting string is what will be sent to openweathermap
-        // as the location query.
-        public static final String COLUMN_LOCATION_SETTING = "location_setting";
-
-        // Human readable location string, provided by the API.  Because for styling,
-        // "Mountain View" is more recognizable than 94043.
-        public static final String COLUMN_CITY_NAME = "city_name";
-
-        // In order to uniquely pinpoint the location on the map when we launch the
-        // map intent, we store the latitude and longitude as returned by openweathermap.
-        public static final String COLUMN_COORD_LAT = "coord_lat";
-        public static final String COLUMN_COORD_LONG = "coord_long";
+        public static final String TABLE_NAME = "student";
+        public static final String COLUMN_ID = "Idstudent";
+        public static final String COLUMN_USER = "user";
+        public static final String COLUMN_PASS = "pass";
+        public static final String COLUMN_GRADE = "grade";
+        public static final String COLUMN_ADRRESS = "address";
+        public static final String COLUMN_BIRTH = "birth";
     }
 
-    /* Inner class that defines the contents of the weather table */
-    public static final class WeatherEntry implements BaseColumns {
 
-        public static final String TABLE_NAME = "weather";
+    public static final class GradeEntry implements BaseColumns {
 
-        // Column with the foreign key into the location table.
-        public static final String COLUMN_LOC_KEY = "location_id";
-        // Date, stored as long in milliseconds since the epoch
-        public static final String COLUMN_DATE = "date";
-        // Weather id as returned by API, to identify the icon to be used
-        public static final String COLUMN_WEATHER_ID = "weather_id";
+        public static final String TABLE_NAME = "grade";
+        public static final String COLUMN_ID = "Idgrade";
+        public static final String COLUMN_NAME = "grade";
 
-        // Short description and long description of the weather, as provided by API.
-        // e.g "clear" vs "sky is clear".
-        public static final String COLUMN_SHORT_DESC = "short_desc";
-
-        // Min and max temperatures for the day (stored as floats)
-        public static final String COLUMN_MIN_TEMP = "min";
-        public static final String COLUMN_MAX_TEMP = "max";
-
-        // Humidity is stored as a float representing percentage
-        public static final String COLUMN_HUMIDITY = "humidity";
-
-        // Humidity is stored as a float representing percentage
-        public static final String COLUMN_PRESSURE = "pressure";
-
-        // Windspeed is stored as a float representing windspeed  mph
-        public static final String COLUMN_WIND_SPEED = "wind";
-
-        // Degrees are meteorological degrees (e.g, 0 is north, 180 is south).  Stored as floats.
-        public static final String COLUMN_DEGREES = "degrees";
     }
+
+    public static final class RecordEntry implements BaseColumns{
+
+        public static final String TABLE_NAME = "record";
+        public static final String COLUMN_STUDENT_FK = "Idstudent";
+        public static final String COLUMN_SUBJECT_FK = "Idsubject";
+        public static final String COLUMN_QUARTER_FK = "Idquarter";
+    }
+
+    public static final class QuarterEntry implements BaseColumns{
+
+        public static final String TABLE_NAME = "quarter";
+        public static final String COLUMN_ID = "Idquarter";
+        public static final String COLUMN_NAME = "quarter";
+    }
+
+    public static final class SubjectEntry implements BaseColumns{
+
+        public static final String TABLE_NAME = "subject";
+        public static final String COLUMN_ID = "Idsubject";
+        public static final String COLUMN_NAME = "subject";
+
+    }
+
+    public static final class BlockEntry implements BaseColumns {
+
+        public static final String TABLE_NAME = "block";
+        public static final String COLUMN_ID = "Idblock";
+        public static final String COLUMN_SECCION = "Idseccion";
+    }
+
+        public static final class SeccionEntry implements BaseColumns{
+
+            public static final String TABLE_NAME = "seccion";
+            public static final String COLUMN_ID = "Idseccion";
+            public static final String COLUMN_SUBJECT = "Idsubject";
+            public static final String COLUMN_CALENDAR = "calendar";
+
+        }
 }
