@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+
 import com.proyecto.ubicua.apecapp.data.ApecDbContract.StudentEntry;
 import com.proyecto.ubicua.apecapp.data.ApecDbContract.RecordEntry;
 import com.proyecto.ubicua.apecapp.data.ApecDbContract.GradeEntry;
@@ -12,13 +13,12 @@ import com.proyecto.ubicua.apecapp.data.ApecDbContract.BlockEntry;
 import com.proyecto.ubicua.apecapp.data.ApecDbContract.SessionEntry;
 import com.proyecto.ubicua.apecapp.data.ApecDbContract.SubjectEntry;
 
-/**
- * Manages a local database for weather data.
- */
+
 public class ApecDbHelper extends SQLiteOpenHelper {
 
     // If you change the database schema, you must increment the database version.
     private static final int DATABASE_VERSION = 1;
+
 
     static final String DATABASE_NAME = "ApecAppDb.db";
 
@@ -61,12 +61,6 @@ public class ApecDbHelper extends SQLiteOpenHelper {
                 RecordEntry.COLUMN_QUARTER_ID + " INTEGER NOT NULL " +
                 RecordEntry.COLUMN_QUARTER_NAME + " INTEGER NOT NULL, " +
                 " );";
-
-
-
-
-
-
 
 
         final String SQL_CREATE_WEATHER_TABLE = "CREATE TABLE " + WeatherEntry.TABLE_NAME + " (" +
