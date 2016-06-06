@@ -6,19 +6,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class ProfileActivity extends AppCompatActivity {
+public class BlockActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_block);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_perfil, menu);
+        getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
     }
 
@@ -30,12 +29,9 @@ public class ProfileActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+
         if (id == R.id.historial) {
             Intent i = new Intent (this,HistoryActivity.class);
-            this.startActivity(i);
-        }
-        if (id == R.id.bloques) {
-            Intent i = new Intent (this,BlockActivity.class);
             this.startActivity(i);
         } if (id == R.id.perfil) {
             Intent i = new Intent (this,ProfileActivity.class);
@@ -47,6 +43,4 @@ public class ProfileActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 }
