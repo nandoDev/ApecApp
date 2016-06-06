@@ -1,10 +1,15 @@
 package com.proyecto.ubicua.apecapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.proyecto.ubicua.apecapp.data.ApecDbHelper;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -12,6 +17,35 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        String nameStudent;
+        String regnumberStudent;
+        String gradeStudent;
+
+        // The detail Activity called via intent.  Inspect the intent for forecast data.
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("EXTRA_USERNAME")) {
+            regnumberStudent = intent.getStringExtra("EXTRA_USERNAME");
+            ApecDbHelper dbHelper = new ApecDbHelper(this);
+            SQLiteDatabase data = dbHelper.getReadableDatabase();
+            Cursor dataStudent = data.rawQuery("select * from student where regnumber = ?", new String[] {regnumberStudent});
+
+            if (dataStudent.moveToFirst()) {
+                do {
+                    nameStudent= dataStudent.getString(1);
+                    gradeStudent = dataStudent.getString(6);
+                } while(dataStudent.moveToNext());
+
+                ((TextView)findViewById(R.id.txtRegNumberStudent))
+                        .setText(regnumberStudent);
+
+                ((TextView)findViewById(R.id.txtGradeStudent))
+                        .setText(gradeStudent);
+
+                ((TextView)findViewById(R.id.txtNameStudent))
+                        .setText(nameStudent);
+            }
+        }
     }
 
     @Override
