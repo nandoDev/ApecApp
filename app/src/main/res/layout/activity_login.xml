@@ -50,16 +50,17 @@
 
             <ImageView
                 android:layout_width="222dp"
-                android:layout_height="120dp"
+                android:layout_height="140dp"
                 android:id="@+id/logoApec"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/logo_apec"
                 android:foregroundGravity="fill_horizontal"
-                android:layout_weight="0.21" />
+                android:layout_weight="0.21"
+                android:onClick="loginClick" />
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="60dp"
                 android:id="@+id/etUsuario"
                 android:layout_marginTop="35dp"
                 android:hint="Usuario"
@@ -74,7 +75,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="60dp"
                 android:inputType="textPassword"
                 android:ems="10"
                 android:id="@+id/etPassword"
@@ -96,7 +97,9 @@
             android:src="@drawable/login"
             android:scaleType="fitXY"
             android:background="#00ffffff"
-            android:onClick="LoginOnClick" />
+            android:onClick="LoginOnClick"
+            android:layout_marginTop="20dp"
+            android:nestedScrollingEnabled="false" />
 
         <LinearLayout
             android:orientation="vertical"

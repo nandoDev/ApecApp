@@ -9,34 +9,32 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- <activity android:name=".MainActivity"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!-- <activity android:name=".MainActivity">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+         </activity>-->
 
-
-        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-        <!-- </intent-filter> -->
-        <!-- </activity> -->
         <activity
             android:name=".HomeActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".LoginActivity">
             <intent-filter>
                 <action android:name="com.proyecto.ubicua.apecapp.HomeActivity" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.proyecto.ubicua.apecapp.MainActivity" />
+                android:value="com.proyecto.ubicua.apecapp.LoginActivity" />
         </activity>
+
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".ProfileActivity" />
         <activity android:name=".HistoryActivity" />
         <activity android:name=".BlockActivity"></activity>

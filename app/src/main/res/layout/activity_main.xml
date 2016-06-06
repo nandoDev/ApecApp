@@ -46,7 +46,8 @@
         android:layout_marginStart="63dp"
         android:layout_alignTop="@+id/btnClear"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:nestedScrollingEnabled="false" />
 
     <Button
         android:layout_width="wrap_content"

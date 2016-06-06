@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.proyecto.ubicua.apecapp.data.ApecDbHelper;
 
-
 public class MainActivity extends AppCompatActivity {
 
         EditText passField;
