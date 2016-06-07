@@ -47,8 +47,8 @@ public class LoginActivity extends AppCompatActivity {
     public void clearClick(View view) {
         userField.setText("");
         passField.setText("");
-        userField.setHint("usuario");
-        passField.setHint("contraseña");
+        userField.setHint("Usuario");
+        passField.setHint("Contraseña");
     }
 
     public void clear() {
