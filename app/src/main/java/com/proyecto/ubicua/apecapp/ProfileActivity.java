@@ -14,6 +14,9 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
     }
 
+//    Select s.namestudent, s.regnumber, s.birth, s.address, g.grade  from student s
+//    inner join grade g on g.Idgrade = s.grade
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -37,7 +40,12 @@ public class ProfileActivity extends AppCompatActivity {
         if (id == R.id.bloques) {
             Intent i = new Intent (this,BlockActivity.class);
             this.startActivity(i);
-        } if (id == R.id.perfil) {
+        }
+        if (id == R.id.home) {
+            Intent i = new Intent (this,HomeActivity.class);
+            this.startActivity(i);
+        }
+        if (id == R.id.perfil) {
             Intent i = new Intent (this,ProfileActivity.class);
             this.startActivity(i);
         }

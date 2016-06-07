@@ -15,7 +15,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText passField;
     EditText userField;
-
+//sdsd
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +59,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public boolean checkCredentials(String username, String password){
+
+//        Select s.regnumber, s.pass  from student s
+//        where s.regnumber = '20131366' and s.pass = '@123'
+        //Cursor cursor = db.rawQuery("Select s.regnumber,s.pass from student s where s.regnumber = '"+ username + "' and s.pass='"+ password +"'", null);
 
         ApecDbHelper dbHelper = new ApecDbHelper(this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();

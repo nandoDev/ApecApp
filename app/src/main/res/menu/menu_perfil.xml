@@ -9,6 +9,11 @@
         android:title="Historial"
         app:showAsAction="never" />
     <item
+        android:id="@+id/home"
+        android:orderInCategory="100"
+        android:title="Home"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/bloques"
         android:orderInCategory="100"
         android:title="Bloques"

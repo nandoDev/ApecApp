@@ -61,7 +61,6 @@ public class HomeActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.historial) {
             Intent i = new Intent (this,HistoryActivity.class);
@@ -70,7 +69,10 @@ public class HomeActivity extends AppCompatActivity {
         if (id == R.id.bloques) {
             Intent i = new Intent (this,BlockActivity.class);
            this.startActivity(i);
-        } if (id == R.id.perfil) {
+
+        }
+
+        if (id == R.id.perfil) {
             Intent i = new Intent (this,ProfileActivity.class);
            this.startActivity(i);
         }

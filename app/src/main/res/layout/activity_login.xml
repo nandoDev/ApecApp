@@ -25,16 +25,7 @@
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:id="@+id/topBar"
-            android:weightSum="1">
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/arrowBack"
-                android:background="#00ffffff"
-                android:src="@drawable/arrowback"
-                android:layout_gravity="center_vertical"
-                android:scaleType="centerCrop" />
-        </LinearLayout>
+            android:weightSum="1"></LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
