@@ -16,46 +16,6 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="45dp"
-            android:weightSum="1"
-            android:background="#000f98"
-            android:id="@+id/topHolder">
-
-            <ImageButton
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:id="@+id/logoHome"
-                android:background="#00ffffff"
-                android:scaleType="fitXY"
-                android:src="@drawable/logo_homeblanco"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:layout_weight="0.53" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/logoApecHorizontal"
-                android:src="@drawable/logo_apec_horizontal"
-                android:layout_gravity="top"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp" />
-
-            <ImageButton
-                android:layout_width="35dp"
-                android:layout_height="fill_parent"
-                android:id="@+id/logoSettings"
-                android:scaleType="fitXY"
-                android:background="#00ffffff"
-                android:layout_margin="5dp"
-                android:src="@drawable/logo_settings"
-                android:layout_gravity="center" />
-        </LinearLayout>
-
-        <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="229dp"
@@ -75,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Nombre Estudiante"
-                android:id="@+id/txtNameStudent"
+                android:id="@+id/txtNombreHome"
                 android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:textColor="#ffffff" />
@@ -85,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Carrera"
-                android:id="@+id/txtGradeStudent"
+                android:id="@+id/txtCarreraHome"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textColor="#ffffff" />
@@ -95,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Matrícula"
-                android:id="@+id/txtRegNumberStudent"
+                android:id="@+id/txtMatHome"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:textColor="#ffffff" />
@@ -109,33 +69,30 @@
 
             <Button
                 android:layout_width="fill_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:text="Bloques"
                 android:id="@+id/btnBloques"
                 android:layout_gravity="center_horizontal"
-                android:background="#bb000f98"
-                android:layout_margin="3dp"
-                android:textColor="#ffffff" />
+                android:background="#f8b71e"
+                android:layout_margin="3dp" />
 
             <Button
                 android:layout_width="fill_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:text="Historial"
                 android:id="@+id/btnHistorial"
                 android:layout_gravity="center_horizontal"
-                android:background="#d0000f98"
-                android:layout_margin="3dp"
-                android:textColor="#ffffff" />
+                android:background="#f8b71e"
+                android:layout_margin="3dp" />
 
             <Button
                 android:layout_width="fill_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:text="Perfil"
                 android:id="@+id/btnPerfil"
                 android:layout_gravity="center_horizontal"
-                android:background="#b8000f98"
-                android:layout_margin="3dp"
-                android:textColor="#ffffff" />
+                android:background="#f8b71e"
+                android:layout_margin="3dp" />
         </LinearLayout>
 
     </LinearLayout>
