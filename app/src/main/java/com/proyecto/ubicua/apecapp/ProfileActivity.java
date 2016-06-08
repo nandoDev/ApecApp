@@ -5,13 +5,33 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.proyecto.ubicua.apecapp.Modelo.Student;
 
 public class ProfileActivity extends AppCompatActivity {
+
+    Student s = new Student();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("student")) {
+            s = intent.getParcelableExtra("student");
+        }
+       // System.out.println("PRUEBA: " + s.getNamestudent());
+        ((TextView)findViewById(R.id.textView2))
+                .setText("En Construccion");
+
+        ((TextView)findViewById(R.id.textView10))
+                .setText("En Construccion");
+
+        ((TextView)findViewById(R.id.textView12))
+                .setText("En Construccion");
     }
 
 //    Select s.namestudent, s.regnumber, s.birth, s.address, g.grade  from student s

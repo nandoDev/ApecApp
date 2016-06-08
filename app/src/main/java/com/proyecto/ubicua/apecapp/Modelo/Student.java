@@ -1,11 +1,12 @@
 package com.proyecto.ubicua.apecapp.Modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by RODIE on 07-Jun-16.
  */
-public class Student {
+public class Student implements Serializable {
 
 
     private String namestudent;

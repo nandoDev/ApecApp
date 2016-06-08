@@ -8,11 +8,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.proyecto.ubicua.apecapp.Modelo.Student;
 import com.proyecto.ubicua.apecapp.data.ApecDbHelper;
+
+import java.io.Serializable;
 
 public class HomeActivity extends AppCompatActivity {
 
+    Student student = new Student();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +26,8 @@ public class HomeActivity extends AppCompatActivity {
         String nameStudent;
         String regnumberStudent;
         String gradeStudent;
+
+
 
         // The detail Activity called via intent.  Inspect the intent for forecast data.
         Intent intent = getIntent();
@@ -44,8 +51,17 @@ public class HomeActivity extends AppCompatActivity {
 
                 ((TextView)findViewById(R.id.txtNameStudent))
                         .setText(nameStudent);
+
+                student.setNamestudent(nameStudent);
+                student.setRegnumber(regnumberStudent);
+                student.setGrade(gradeStudent);
             }
         }
+    }
+
+
+    public void ProfileData(Intent i,Student s){
+     i.putExtra("student",s);
     }
     //hola
     @Override
@@ -74,6 +90,8 @@ public class HomeActivity extends AppCompatActivity {
 
         if (id == R.id.perfil) {
             Intent i = new Intent (this,ProfileActivity.class);
+            System.out.println("PRueba = " + student.getNamestudent());
+            ProfileData(i,student);
            this.startActivity(i);
         }
         if (id == R.id.cerrar) {
