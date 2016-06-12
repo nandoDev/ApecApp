@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.proyecto.ubicua.apecapp.HistoryActivity"
-    android:id="@+id/container">
+    tools:context="com.proyecto.ubicua.apecapp.HistoryDetailActivity"
+    android:id="@+id/containerHistoryDetail">
 
 </FrameLayout>

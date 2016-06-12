@@ -11,25 +11,25 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.proyecto.ubicua.apecapp.data.ApecDbHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HistoryActivity extends AppCompatActivity {
+public class HistoryDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history);
+        setContentView(R.layout.activity_history_detail);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new HistoryFragment())
+                    .add(R.id.containerHistoryDetail, new HistoryDetailFragment())
                     .commit();
         }
     }
@@ -49,10 +49,7 @@ public class HistoryActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.historial) {
-            Intent i = new Intent (this,HomeActivity.class);
-            this.startActivity(i);
-        }if (id == R.id.bloques) {
+        if (id == R.id.bloques) {
             Intent i = new Intent (this,BlockActivity.class);
             this.startActivity(i);
         } if (id == R.id.perfil) {
@@ -61,16 +58,16 @@ public class HistoryActivity extends AppCompatActivity {
         }
         if (id == R.id.cerrar) {
             Intent i = new Intent (this,LoginActivity.class);
-           this.startActivity(i);
+            this.startActivity(i);
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public static class HistoryFragment extends Fragment {
+    public static class HistoryDetailFragment extends Fragment {
 
-        private ArrayAdapter <String> ListHistorialAdapter;
+        private ArrayAdapter<String> ListHistorialDetailAdapter;
 
-        public HistoryFragment() {
+        public HistoryDetailFragment() {
         }
 
         public void onCreate(Bundle savedInstanceState) {
@@ -79,56 +76,51 @@ public class HistoryActivity extends AppCompatActivity {
             setHasOptionsMenu(true);
         }
 
-       @Override
+        @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState){
 
             final String regnumberStudent;
+            final String quarter;
             Intent intent = getActivity().getIntent();
 
-            if (intent != null && intent.hasExtra("EXTRA_USERNAME")) {
+            if (intent != null && intent.hasExtra("EXTRA_USERNAME") && intent.hasExtra("EXTRA_QUARTER")) {
                 regnumberStudent = intent.getStringExtra("EXTRA_USERNAME");
+                quarter = intent.getStringExtra("EXTRA_QUARTER");
                 ApecDbHelper dbHelper = new ApecDbHelper(getActivity().getApplicationContext());
                 SQLiteDatabase data = dbHelper.getReadableDatabase();
-                Cursor dataHistorialStudent = data.rawQuery("select distinct q.Idquarter, q.quarter \n" +
+                Cursor dataHistorialSubjectStudent = data.rawQuery("select su.subject\n" +
                         "from record r \n" +
-                        "inner join quarter q on r.Idquarter = q.Idquarter\n" +
-                        "inner join student s on r.Idstudent = s.Idstudent\n" +
-                        "where s.regnumber  = ? \n" +
-                        "order by q.Idquarter asc;", new String[]{regnumberStudent});
+                        "inner join  subject su on r.Idsubject = su.Idsubject\n" +
+                        "inner join  student s on s.Idstudent = r.Idstudent\n" +
+                        "inner join  quarter q on  q.Idquarter = r.Idquarter\n" +
+                        "where s.regnumber = ?  and q.quarter = ? ;", new String[]{regnumberStudent,quarter});
 
-                if (dataHistorialStudent.moveToFirst()) {
+                if (dataHistorialSubjectStudent.moveToFirst()) {
 
-                    final List<String> ListHistorialStudent = new ArrayList<String>();
+                    final List<String> ListHistorialSubjectStudent = new ArrayList<String>();
                     do {
-                        ListHistorialStudent.add(dataHistorialStudent.getString(1));
-                    } while (dataHistorialStudent.moveToNext());
+                        ListHistorialSubjectStudent.add(dataHistorialSubjectStudent.getString(0));
+                    } while (dataHistorialSubjectStudent.moveToNext());
 
                     // The ArrayAdapter will take data from a source and
                     // use it to populate the ListView it's attached to.
-                    ListHistorialAdapter =
+                    ListHistorialDetailAdapter =
                             new ArrayAdapter<String>(
                                     getActivity(), // The current context (this activity)
-                                    R.layout.list_item_quarterhistorial, // The name of the layout ID.
-                                    R.id.list_item_quarterhistorial_textview, // The ID of the textview to populate.
-                                    ListHistorialStudent);
+                                    R.layout.list_item_subjecthistorial, // The name of the layout ID.
+                                    R.id.list_item_subjecthistorial_textview, // The ID of the textview to populate.
+                                    ListHistorialSubjectStudent);
 
-                    View rootView = inflater.inflate(R.layout.fragment_history, container, false);
+                    View rootView = inflater.inflate(R.layout.fragment_historydetail, container, false);
 
                     // Get a reference to the ListView, and attach this adapter to it.
-                    ListView listView = (ListView) rootView.findViewById(R.id.listview_quarterhistorial);
-                    listView.setAdapter(ListHistorialAdapter);
+                    ListView listView = (ListView) rootView.findViewById(R.id.listview_subjecthistorial);
 
-                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                            String quarter = ListHistorialAdapter.getItem(position);
-                            Intent intent = new Intent(getActivity(), HistoryDetailActivity.class);
-                            intent.putExtra("EXTRA_QUARTER", quarter);
-                            intent.putExtra ("EXTRA_USERNAME", regnumberStudent);
-                            startActivity(intent);
-                        }
-                    });
+
+                    ((TextView)rootView.findViewById(R.id.title_Cuatrimestre))
+                            .setText(quarter);
+                    listView.setAdapter(ListHistorialDetailAdapter);
 
                     return rootView;
 

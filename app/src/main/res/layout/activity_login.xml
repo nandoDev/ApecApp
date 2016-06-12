@@ -20,12 +20,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:id="@+id/topBar"
-            android:weightSum="1"></LinearLayout>
+
 
         <LinearLayout
             android:orientation="vertical"
@@ -43,7 +38,8 @@
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/logo_apec"
                 android:foregroundGravity="fill_horizontal"
-                android:layout_weight="0.21"/>
+                android:layout_weight="0.21"
+                android:layout_marginTop="60dp" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -75,7 +71,8 @@
                 android:password="false"
                 android:fontFamily="@string/abc_action_bar_home_description"
                 android:textColorHint="#ffffff"
-                android:layout_weight="0.73" />
+                android:layout_weight="0.73"
+                android:textColor="#ffffff" />
 
             <ImageButton
                 android:layout_width="fill_parent"

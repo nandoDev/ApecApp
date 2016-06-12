@@ -36,12 +36,12 @@ public class ApecDbHelper extends SQLiteOpenHelper {
 
         final String SQL_CREATE_QUARTER_TABLE = "CREATE TABLE " + QuarterEntry.TABLE_NAME + " (" +
                 QuarterEntry.COLUMN_ID + " INTEGER PRIMARY KEY, " +
-                GradeEntry.COLUMN_NAME + " TEXT NOT NULL " +
+                QuarterEntry.COLUMN_NAME + " TEXT NOT NULL " +
                 " );";
 
         final String SQL_CREATE_SUBJECT_TABLE = "CREATE TABLE " + SubjectEntry.TABLE_NAME + " (" +
-                QuarterEntry.COLUMN_ID + " TEXT PRIMARY KEY, " +
-                GradeEntry.COLUMN_NAME + " TEXT NOT NULL " +
+                SubjectEntry.COLUMN_ID + " TEXT PRIMARY KEY, " +
+                SubjectEntry.COLUMN_NAME + " TEXT NOT NULL " +
                 " );";
 
         final String SQL_CREATE_STUDENT_TABLE = "CREATE TABLE " + StudentEntry.TABLE_NAME + " (" +

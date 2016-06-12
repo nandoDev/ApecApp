@@ -7,29 +7,24 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.proyecto.ubicua.apecapp.Modelo.Student;
 import com.proyecto.ubicua.apecapp.data.ApecDbHelper;
 
-import java.io.Serializable;
-
 public class HomeActivity extends AppCompatActivity {
 
     Student student = new Student();
+    String regnumberStudent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         String nameStudent;
-        String regnumberStudent;
         String gradeStudent;
 
-
-
-        // The detail Activity called via intent.  Inspect the intent for forecast data.
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra("EXTRA_USERNAME")) {
             regnumberStudent = intent.getStringExtra("EXTRA_USERNAME");
@@ -59,6 +54,14 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+    public void HistorialOnClick (View view){
+        Intent i = new Intent (this,HistoryActivity.class);
+        i.putExtra("EXTRA_USERNAME", regnumberStudent);
+        this.startActivity(i);
+
+
+    }
+
 
     public void ProfileData(Intent i,Student s){
      i.putExtra("student",s);
@@ -79,8 +82,10 @@ public class HomeActivity extends AppCompatActivity {
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.historial) {
-            Intent i = new Intent (this,HistoryActivity.class);
-            this.startActivity(i);
+            HistorialOnClick(((TextView)findViewById(R.id.historial)));
+            /*Intent i = new Intent (this,HistoryActivity.class);
+            i.putExtra("EXTRA_USERNAME", regnumberStudent);
+            this.startActivity(i);*/
         }
         if (id == R.id.bloques) {
             Intent i = new Intent (this,BlockActivity.class);

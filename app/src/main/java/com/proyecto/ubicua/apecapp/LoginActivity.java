@@ -39,17 +39,13 @@ public class LoginActivity extends AppCompatActivity {
             intent.putExtra("EXTRA_USERNAME", uname);
             startActivity(intent);
         }
-        else
+        else {
             clear();
-            Toast.makeText(getApplicationContext(),"LOGIN FALLIDO",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "LOGIN FALLIDO", Toast.LENGTH_SHORT).show();
+        }
     }
 
-    public void clearClick(View view) {
-        userField.setText("");
-        passField.setText("");
-        userField.setHint("Usuario");
-        passField.setHint("Contraseña");
-    }
+
 
     public void clear() {
         userField.setText("");

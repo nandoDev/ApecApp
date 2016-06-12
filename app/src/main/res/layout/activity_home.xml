@@ -85,7 +85,9 @@
                 android:layout_gravity="center_horizontal"
                 android:background="#d0000f98"
                 android:layout_margin="3dp"
-                android:textColor="#ffffff" />
+                android:textColor="#ffffff"
+                android:onClick="HistorialOnClick"
+                android:nestedScrollingEnabled="false" />
 
             <Button
                 android:layout_width="fill_parent"
