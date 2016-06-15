@@ -15,7 +15,8 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText passField;
     EditText userField;
-//sdsd
+
+    //sdsd
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,20 +32,17 @@ public class LoginActivity extends AppCompatActivity {
         String pass = passField.getText().toString();
 
         boolean check = checkCredentials(uname, pass);
-        if(check)
-        {
+        if (check) {
             clear();
-            Toast.makeText(getApplicationContext(),"LOGIN EXITOSO",Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent (getApplicationContext(),HomeActivity.class);
+            Toast.makeText(getApplicationContext(), "LOGIN EXITOSO", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             intent.putExtra("EXTRA_USERNAME", uname);
             startActivity(intent);
-        }
-        else {
+        } else {
             clear();
             Toast.makeText(getApplicationContext(), "LOGIN FALLIDO", Toast.LENGTH_SHORT).show();
         }
     }
-
 
 
     public void clear() {
@@ -54,25 +52,32 @@ public class LoginActivity extends AppCompatActivity {
         passField.setHint("PASSWORD");
     }
 
-    public boolean checkCredentials(String username, String password){
+    public boolean checkCredentials(String username, String password) {
 
 //        Select s.regnumber, s.pass  from student s
 //        where s.regnumber = '20131366' and s.pass = '@123'
         //Cursor cursor = db.rawQuery("Select s.regnumber,s.pass from student s where s.regnumber = '"+ username + "' and s.pass='"+ password +"'", null);
-
+        Boolean acceso = false;
         ApecDbHelper dbHelper = new ApecDbHelper(this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from student", null);
+        Cursor cursor = db.rawQuery("select * from student s where s.regnumber = " + username + " and " + "s.pass = '" + password + "'", null);
         cursor.moveToFirst();
-        String count = String.valueOf(cursor.getCount());
-        for (int i=0; i < cursor.getCount();i++){
-            if (username.equalsIgnoreCase(cursor.getString(2))&& password.equalsIgnoreCase(cursor.getString(3))){
-                db.close();
-                return true;
-            }
-            cursor.moveToNext();
+        Integer count = cursor.getCount();
+        if (count == 0) {
+            acceso = false;
+        } else if (username.equalsIgnoreCase(cursor.getString(2)) && password.equalsIgnoreCase(cursor.getString(3))) {
+            db.close();
+            acceso = true;
         }
-        db.close();
-        return false;
+//        for (int i=0; i < cursor.getCount();i++){
+//            if (username.equalsIgnoreCase(cursor.getString(2))&& password.equalsIgnoreCase(cursor.getString(3))){
+//                db.close();
+//                return true;
+//            }
+//            cursor.moveToNext();
+//        }
+//        db.close();
+//        return false;
+        return acceso;
     }
 }

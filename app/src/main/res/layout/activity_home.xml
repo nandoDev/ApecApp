@@ -41,22 +41,22 @@
                 android:textColor="#ffffff" />
 
             <TextView
-                android:layout_width="55dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Carrera"
                 android:id="@+id/txtGradeStudent"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textColor="#ffffff" />
+                android:textColor="#ffffff"
+                android:layout_weight="0.48" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="matrícula"
                 android:id="@+id/txtRegNumberStudent"
-                android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:textColor="#ffffff" />
         </LinearLayout>
@@ -64,7 +64,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/menuHolder">
 
             <Button
@@ -72,7 +72,6 @@
                 android:layout_height="40dp"
                 android:text="Bloques"
                 android:id="@+id/btnBloques"
-                android:layout_gravity="center_horizontal"
                 android:background="#bb000f98"
                 android:layout_margin="3dp"
                 android:textColor="#ffffff" />
@@ -82,7 +81,6 @@
                 android:layout_height="40dp"
                 android:text="Historial"
                 android:id="@+id/btnHistorial"
-                android:layout_gravity="center_horizontal"
                 android:background="#d0000f98"
                 android:layout_margin="3dp"
                 android:textColor="#ffffff"
@@ -94,10 +92,10 @@
                 android:layout_height="40dp"
                 android:text="Perfil"
                 android:id="@+id/btnPerfil"
-                android:layout_gravity="center_horizontal"
                 android:background="#b8000f98"
                 android:layout_margin="3dp"
-                android:textColor="#ffffff" />
+                android:textColor="#ffffff"
+                android:onClick="PerfilOnClick" />
         </LinearLayout>
 
     </LinearLayout>

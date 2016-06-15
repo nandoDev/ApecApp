@@ -9,29 +9,41 @@ import android.widget.TextView;
 
 import com.proyecto.ubicua.apecapp.Modelo.Student;
 
+import java.text.SimpleDateFormat;
+
 public class ProfileActivity extends AppCompatActivity {
 
     Student s = new Student();
-
+    SimpleDateFormat date = new SimpleDateFormat("dd/mm/yyyy");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        Intent intent = getIntent();
-        if (intent != null && intent.hasExtra("student")) {
-            s = intent.getParcelableExtra("student");
-        }
+//        Intent intent = getIntent();
+//        if (intent != null && intent.hasExtra("student")) {
+//            s = intent.getParcelableExtra("student");
+//        }
+        s = (Student) getIntent().getSerializableExtra("student");
        // System.out.println("PRUEBA: " + s.getNamestudent());
-        ((TextView)findViewById(R.id.textView2))
-                .setText("En Construccion");
+        ((TextView)findViewById(R.id.txtname))
+                .setText(s.getNamestudent());
 
-        ((TextView)findViewById(R.id.textView10))
-                .setText("En Construccion");
+        ((TextView)findViewById(R.id.txtmatricula))
+                .setText(s.getRegnumber());
 
-        ((TextView)findViewById(R.id.textView12))
-                .setText("En Construccion");
+        ((TextView)findViewById(R.id.txtgrade))
+                .setText(s.getGrade());
+
+        ((TextView)findViewById(R.id.txtbirth))
+                .setText(date.format(s.getBirth()));
+
+        ((TextView)findViewById(R.id.txtaddress))
+                .setText(s.getAddress());
+
+
+
     }
 
 //    Select s.namestudent, s.regnumber, s.birth, s.address, g.grade  from student s
