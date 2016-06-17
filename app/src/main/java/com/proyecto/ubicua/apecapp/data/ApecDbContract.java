@@ -25,9 +25,12 @@ public class ApecDbContract {
         public static final String COLUMN_NAME = "namestudent";
         public static final String COLUMN_REGNUMBER = "regnumber";
         public static final String COLUMN_PASS = "pass";
-        public static final String COLUMN_GRADE_FK = "grade";
+        public static final String COLUMN_GRADE_FK = "Idgrade";
         public static final String COLUMN_ADDRESS= "address";
         public static final String COLUMN_BIRTH = "birth";
+        public static final String COLUMN_PHONE= "phone";
+        public static final String COLUMN_PICTURE= "picture";
+
     }
 
     public static final class GradeEntry implements BaseColumns {

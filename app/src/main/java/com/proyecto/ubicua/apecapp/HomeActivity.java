@@ -15,7 +15,6 @@ import com.proyecto.ubicua.apecapp.data.ApecDbHelper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -37,12 +36,9 @@ public class HomeActivity extends AppCompatActivity {
             SQLiteDatabase data = dbHelper.getReadableDatabase();
           //  Cursor dataStudent = data.rawQuery("select * from student where regnumber = ?", new String[] {regnumberStudent});
             Cursor dataStudent = data.rawQuery("select s.regnumber,g.grade,s.namestudent,s.birth,s.address" +
-                    " from student s inner join grade g on g.Idgrade = s.grade where s.regnumber = ?", new String[] {regnumberStudent});
-//            Select s.regnumber,g.grade,s.namestudent, s.birth, s.address from student s
-//            inner join grade g on g.Idgrade = s.grade
-//            where s.regnumber = '20121452'
+                    " from student s inner join grade g on g.Idgrade = s.Idgrade where s.regnumber = ?", new String[] {regnumberStudent});
 
-            if (dataStudent.moveToFirst()) {
+                if (dataStudent.moveToFirst()) {
                 student.setRegnumber(dataStudent.getString(0));
                 student.setGrade(dataStudent.getString(1));
                 student.setNamestudent(dataStudent.getString(2));

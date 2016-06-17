@@ -16,7 +16,7 @@ import com.proyecto.ubicua.apecapp.data.ApecDbContract.SubjectEntry;
 public class ApecDbHelper extends SQLiteOpenHelper {
 
     // If you change the database schema, you must increment the database version.
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
 
     static final String DATABASE_NAME = "ApecAppDb.db";
@@ -51,6 +51,8 @@ public class ApecDbHelper extends SQLiteOpenHelper {
                 StudentEntry.COLUMN_PASS + " TEXT NOT NULL, " +
                 StudentEntry.COLUMN_BIRTH + " TEXT NOT NULL, " +
                 StudentEntry.COLUMN_ADDRESS + " TEXT NOT NULL, " +
+                StudentEntry.COLUMN_PHONE + " TEXT NOT NULL, " +
+                StudentEntry.COLUMN_PICTURE  + " TEXT, " +
                 //Clave foránea de la carrera que esta estudiando
                 StudentEntry.COLUMN_GRADE_FK + " TEXT NOT NULL, " +
                 // Establecer la columna  grade como una clave foránea  a la tabla grade
@@ -72,7 +74,7 @@ public class ApecDbHelper extends SQLiteOpenHelper {
                         " FOREIGN KEY (" + RecordEntry.COLUMN_SUBJECT_FK + ") REFERENCES " +
                         SubjectEntry.TABLE_NAME + " (" + SubjectEntry.COLUMN_ID + "), " +
                 // Establecer la columna  Idquarter como una clave foránea  a la tabla quarter
-                        " FOREIGN KEY (" + RecordEntry.COLUMN_SUBJECT_FK + ") REFERENCES " +
+                        " FOREIGN KEY (" + RecordEntry.COLUMN_QUARTER_FK + ") REFERENCES " +
                         QuarterEntry.TABLE_NAME + " (" + QuarterEntry.COLUMN_ID + "), " +
                 //Para  asegurar que las tres columnas IdStudent,IdSubject y IdQuarter conforman una
                 // restricción UNIQUE con una estrategia REPLACE
@@ -203,21 +205,18 @@ public class ApecDbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("INSERT INTO quarter VALUES ('52','2016-03');");
         sqLiteDatabase.execSQL("INSERT INTO quarter VALUES ('53','2017-01');");
 
-
-
-
-        sqLiteDatabase.execSQL("INSERT INTO student (Idstudent, nameStudent, regnumber, pass, birth, address, grade)" +
-                        " VALUES (1,'Carlos López','20131366','@123','15/12/1987', 'Calle Padre Billini #34', 'ADM');");
-        sqLiteDatabase.execSQL("INSERT INTO student (Idstudent,nameStudent, regnumber, pass, birth, address, grade)" +
-                        " VALUES (2,'Rodiel Montoya','20144578','@333','15/10/1992', 'Calle Leopoldo Navarro #8', 'ISC');");
-        sqLiteDatabase.execSQL("INSERT INTO student (Idstudent,nameStudent, regnumber, pass, birth, address, grade)" +
-                        " VALUES (3,'Manuel Flores','20121452','@222','04/12/1995', 'Av. Independencia #145', 'ISO');");
-        sqLiteDatabase.execSQL("INSERT INTO student (Idstudent,nameStudent, regnumber, pass, birth, address, grade)" +
-                        " VALUES (4,'Christian Alvárez','20124585','@111','08/12/1985', 'Calle Jacobo Majluta #34 Residencial El Vergel Ed.5 apto201', 'ISO');");
-        sqLiteDatabase.execSQL("INSERT INTO student (Idstudent,nameStudent, regnumber, pass, birth, address, grade)" +
-                        " VALUES (5,'Clara Vergara','20156235','@777','20/10/1988', 'Av. 27 de febrero #216', 'ADM');");
-        sqLiteDatabase.execSQL("INSERT INTO student (Idstudent,nameStudent, regnumber, pass, birth, address, grade)" +
-                        " VALUES (6,'Rodrigo Ceara','20144512','@888','06/09/1986', 'Av. San Vicente Residencial AguasClaras. Edif C. Apto 3-2', 'ISO');");
+        sqLiteDatabase.execSQL("INSERT INTO student (Idstudent, nameStudent, regnumber, pass, birth, address, Idgrade, phone)" +
+                        " VALUES (1,'Carlos López','20131366','@123','15/12/1987', 'Calle Padre Billini #34', 'ADM', '829-3852545');");
+        sqLiteDatabase.execSQL("INSERT INTO student (Idstudent,nameStudent, regnumber, pass, birth, address, Idgrade, phone)" +
+                        " VALUES (2,'Rodiel Montoya','20144578','@333','15/10/1992', 'Calle Leopoldo Navarro #8', 'ISC', '829-3888545');");
+        sqLiteDatabase.execSQL("INSERT INTO student (Idstudent,nameStudent, regnumber, pass, birth, address, Idgrade, phone)" +
+                        " VALUES (3,'Manuel Flores','20121452','@222','04/12/1995', 'Av. Independencia #145', 'ISO', '829-3852995');");
+        sqLiteDatabase.execSQL("INSERT INTO student (Idstudent,nameStudent, regnumber, pass, birth, address, Idgrade, phone)" +
+                        " VALUES (4,'Christian Alvárez','20124585','@111','08/12/1985', 'Calle Jacobo Majluta #34 Residencial El Vergel Ed.5 apto201', 'ISO', '829-3857775');");
+        sqLiteDatabase.execSQL("INSERT INTO student (Idstudent,nameStudent, regnumber, pass, birth, address, Idgrade, phone)" +
+                        " VALUES (5,'Clara Vergara','20156235','@777','20/10/1988', 'Av. 27 de febrero #216', 'ADM', '829-7852545');");
+        sqLiteDatabase.execSQL("INSERT INTO student (Idstudent,nameStudent, regnumber, pass, birth, address, Idgrade, phone)" +
+                        " VALUES (6,'Rodrigo Ceara','20144512','@888','06/09/1986', 'Av. San Vicente Residencial AguasClaras. Edif C. Apto 3-2', 'ISO', '829-3772545');");
 
 
         sqLiteDatabase.execSQL("INSERT INTO record VALUES ('3','ISO100','38');");
@@ -255,7 +254,13 @@ public class ApecDbHelper extends SQLiteOpenHelper {
         // It does NOT depend on the version number for your application.
         // If you want to update the schema without wiping data, commenting out the next 2 lines
         // should be your top priority before modifying this method.
-        //sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + LocationEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + GradeEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + QuarterEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SubjectEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + StudentEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + RecordEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SessionEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + BlockEntry.TABLE_NAME);
         //sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + WeatherEntry.TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
