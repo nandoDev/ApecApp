@@ -14,6 +14,7 @@ public class Student implements Serializable {
     private Date birth;
     private String address;
     private String grade;
+    private String phone;
 
     public Student(){}
 
@@ -55,5 +56,12 @@ public class Student implements Serializable {
 
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

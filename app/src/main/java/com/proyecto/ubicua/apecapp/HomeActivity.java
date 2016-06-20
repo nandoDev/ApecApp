@@ -26,16 +26,13 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        String nameStudent;
-        String gradeStudent;
-
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra("EXTRA_USERNAME")) {
             regnumberStudent = intent.getStringExtra("EXTRA_USERNAME");
             ApecDbHelper dbHelper = new ApecDbHelper(this);
             SQLiteDatabase data = dbHelper.getReadableDatabase();
           //  Cursor dataStudent = data.rawQuery("select * from student where regnumber = ?", new String[] {regnumberStudent});
-            Cursor dataStudent = data.rawQuery("select s.regnumber,g.grade,s.namestudent,s.birth,s.address" +
+            Cursor dataStudent = data.rawQuery("select s.regnumber,g.grade,s.namestudent,s.birth,s.address,s.phone" +
                     " from student s inner join grade g on g.Idgrade = s.Idgrade where s.regnumber = ?", new String[] {regnumberStudent});
 
                 if (dataStudent.moveToFirst()) {
@@ -48,10 +45,7 @@ public class HomeActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 student.setAddress(dataStudent.getString(4));
-
-//                    nameStudent= dataStudent.getString(1);
-//                    gradeStudent = dataStudent.getString(6);
-
+                student.setPhone(dataStudent.getString(5));
 
                 ((TextView)findViewById(R.id.txtRegNumberStudent))
                         .setText(student.getRegnumber());
@@ -69,13 +63,14 @@ public class HomeActivity extends AppCompatActivity {
         Intent i = new Intent (this,HistoryActivity.class);
         i.putExtra("EXTRA_USERNAME", regnumberStudent);
         this.startActivity(i);
+        this.finish();
     }
 
     public void PerfilOnClick (View view){
         Intent i = new Intent (this,ProfileActivity.class);
-        System.out.println("Prueba = " + student.getNamestudent());
-        ProfileData(i,student);
+        i.putExtra("EXTRA_USERNAME", regnumberStudent);
         this.startActivity(i);
+        this.finish();
     }
 
 
@@ -106,19 +101,22 @@ public class HomeActivity extends AppCompatActivity {
         }
         if (id == R.id.bloques) {
             Intent i = new Intent (this,BlockActivity.class);
+            i.putExtra("EXTRA_USERNAME", regnumberStudent);
            this.startActivity(i);
+            this.finish();
 
         }
 
         if (id == R.id.perfil) {
             Intent i = new Intent (this,ProfileActivity.class);
-            System.out.println("Prueba = " + student.getNamestudent());
-            ProfileData(i,student);
-           this.startActivity(i);
+            i.putExtra("EXTRA_USERNAME", regnumberStudent);
+            this.startActivity(i);
+            this.finish();
         }
         if (id == R.id.cerrar) {
             Intent i = new Intent (this,LoginActivity.class);
             this.startActivity(i);
+            this.finish();
         }
         return super.onOptionsItemSelected(item);
     }

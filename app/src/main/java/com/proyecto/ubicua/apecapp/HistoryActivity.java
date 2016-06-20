@@ -22,11 +22,18 @@ import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity {
 
+
+    String regnumberStudent = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
+
+        Intent intent = getIntent();
+        if(intent != null && intent.hasExtra("EXTRA_USERNAME")){
+            regnumberStudent = intent.getStringExtra("EXTRA_USERNAME");
+        }
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new HistoryFragment())
@@ -54,9 +61,11 @@ public class HistoryActivity extends AppCompatActivity {
             this.startActivity(i);
         }if (id == R.id.bloques) {
             Intent i = new Intent (this,BlockActivity.class);
+            i.putExtra("EXTRA_USERNAME",regnumberStudent);
             this.startActivity(i);
         } if (id == R.id.perfil) {
             Intent i = new Intent (this,ProfileActivity.class);
+            i.putExtra("EXTRA_USERNAME",regnumberStudent);
             this.startActivity(i);
         }
         if (id == R.id.cerrar) {
